@@ -16,6 +16,8 @@ public class PokeCardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poke_card);
+        PokeCard pokeCard = (PokeCard) getIntent().getSerializableExtra("pokemon");
+        loadPokemon(pokeCard);
     }
 
     private void loadPokemon(PokeCard pokeCard){
