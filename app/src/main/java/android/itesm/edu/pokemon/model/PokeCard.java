@@ -1,6 +1,8 @@
 package android.itesm.edu.pokemon.model;
 
-public class PokeCard {
+import java.io.Serializable;
+
+public class PokeCard implements Serializable {
 
     private String id, name, imageUrl, artist;
 
