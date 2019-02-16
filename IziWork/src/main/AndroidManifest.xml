@@ -21,7 +21,8 @@
         <activity android:name=".PokeCardActivity" />
         <activity android:name=".Horario" />
         <activity android:name=".Perfil" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Work_Card"></activity>
     </application>
 
 </manifest>

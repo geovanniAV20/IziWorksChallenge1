@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.itesm.edu.pokemon.PokeCardActivity;
 import android.itesm.edu.pokemon.R;
+import android.itesm.edu.pokemon.Work_Card;
 import android.itesm.edu.pokemon.model.WorkCard;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -37,14 +38,14 @@ public class PokemonRecycleAdapter
     public PokeRecordHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view;
         LayoutInflater inflater = LayoutInflater.from(context);
-        view = inflater.inflate( R.layout.poke_card_item,viewGroup,false);
+        view = inflater.inflate( R.layout.activity_poke_card,viewGroup,false);
         final PokeRecordHolder pokeRecordHolder = new PokeRecordHolder(view);
         pokeRecordHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 WorkCard pokeCard = cards.get(pokeRecordHolder.getAdapterPosition());
                 Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
-                Intent it = new Intent(context, PokeCardActivity.class);
+                Intent it = new Intent(context, Work_Card.class);
                 it.putExtra("pokemon", pokeCard);
                 context.startActivity(it);
             }
@@ -55,9 +56,8 @@ public class PokemonRecycleAdapter
     @Override
     public void onBindViewHolder(@NonNull PokeRecordHolder pokeRecordHolder, int i) {
         pokeRecordHolder.name.setText(cards.get(i).getNombre());
-        pokeRecordHolder.id.setText(cards.get(i).getSalario());
-        pokeRecordHolder.artist.setText(cards.get(i).getDireccion());
-        pokeRecordHolder.artist.setText(cards.get(i).getImageUrl());
+        pokeRecordHolder.id.setText(cards.get(i).getDias().toString());
+        pokeRecordHolder.artist.setText(cards.get(i).getSalario());
 
         Glide.with(context).load(cards.get(i).getImageUrl()).apply(options).into(pokeRecordHolder.image);
     }

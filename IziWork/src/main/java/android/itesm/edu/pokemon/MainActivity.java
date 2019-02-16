@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     JSONArray cardsJSON = response.getJSONArray("trabajos");
                     JSONObject jsonObject = null;
-                    List<String> dias = new ArrayList<>();
+
 
                     for (int i = 0; i < cardsJSON.length(); i++)
                     {
@@ -60,15 +61,19 @@ public class MainActivity extends AppCompatActivity {
                         workCard.setNombre(jsonObject.getString("nombre"));
                         workCard.setSalario(jsonObject.getString("salario"));
                         workCard.setDireccion(jsonObject.getString("direccion"));
-                        workCard.setImageUrl(jsonObject.getString("descripcion"));
+                        workCard.setDescripcion(jsonObject.getString("descripcion"));
 
                         JSONArray jsonArrayDias = jsonObject.getJSONArray("dias");
+                        ArrayList<String> dias = new ArrayList<>();
                         for (int j = 0; j < jsonArrayDias.length(); j++) {
-                            dias.add(jsonArrayDias.getString(j));
+
+                            String string = jsonArrayDias.getString(j);
+                            dias.add(string);
                         }
 
                         workCard.setDias(dias);
                         cards.add(workCard);
+                        //dias.clear();
                     }
                 }catch (JSONException jsonException){
                     jsonException.printStackTrace();
@@ -88,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    private void setRecyclerView(List<WorkCard> workCards)
+    private void setRecyclerView(List<WorkCard> wordCards)
     {
-        PokemonRecycleAdapter pokemonRecycleAdapter = new PokemonRecycleAdapter(this, workCards);
+        PokemonRecycleAdapter pokemonRecycleAdapter = new PokemonRecycleAdapter(this, wordCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(pokemonRecycleAdapter);
 

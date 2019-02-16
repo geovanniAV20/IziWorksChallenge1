@@ -7,12 +7,12 @@ import java.util.List;
 public class WorkCard implements Serializable {
 
     private String nombre, salario, direccion, descripcion, imageUrl;
-    private List<String> dias = new ArrayList<>();
+    private ArrayList<String> dias = new ArrayList<>();
 
     public WorkCard() {
     }
 
-    public WorkCard(String nombre, String salario, String direccion, String descripcion, String imageUrl, List<String> dias) {
+    public WorkCard(String nombre, String salario, String direccion, String descripcion, String imageUrl, ArrayList<String> dias) {
         this.nombre = nombre;
         this.salario = salario;
         this.direccion = direccion;
@@ -33,7 +33,7 @@ public class WorkCard implements Serializable {
         return salario;
     }
 
-    public void setSalario(String name) {
+    public void setSalario(String salario) {
         this.salario = salario;
     }
 
@@ -41,8 +41,16 @@ public class WorkCard implements Serializable {
         return direccion;
     }
 
-    public void setDireccion(String name) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getImageUrl() {
@@ -53,11 +61,11 @@ public class WorkCard implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public List<String> getDias() {
+    public ArrayList<String> getDias() {
         return dias;
     }
 
-    public void setDias(List<String> name) {
+    public void setDias(ArrayList<String> dias) {
         this.dias = dias;
     }
 
