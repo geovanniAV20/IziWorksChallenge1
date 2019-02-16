@@ -2,7 +2,7 @@ package android.itesm.edu.pokemon;
 
 
 import android.itesm.edu.pokemon.adapters.PokemonRecycleAdapter;
-import android.itesm.edu.pokemon.model.PokeCard;
+import android.itesm.edu.pokemon.model.WorkCard;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,11 +26,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String JSON_URL = "https://api.pokemontcg.io/v1/cards" ;
+    private final String JSON_URL = "https://api.myjson.com/bins/kb4ca" ;
 
     private JsonObjectRequest request;
     private RequestQueue requestQueue;
-    private List<PokeCard> cards;
+    private List<WorkCard> cards;
     private RecyclerView recyclerView;
 
     @Override
@@ -49,18 +49,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try{
-                    JSONArray cardsJSON = response.getJSONArray("cards");
+                    JSONArray cardsJSON = response.getJSONArray("trabajos");
                     JSONObject jsonObject = null;
+                    List<String> dias = new ArrayList<>();
 
                     for (int i = 0; i < cardsJSON.length(); i++)
                     {
                         jsonObject = cardsJSON.getJSONObject(i);
-                        PokeCard pokeCard = new PokeCard();
-                        pokeCard.setId(jsonObject.getString("nombre"));
-                        pokeCard.setName(jsonObject.getString("salario"));
-                        //pokeCard.setImageUrl(jsonObject.getString("imageUrl"));
-                        pokeCard.setArtist(jsonObject.getString("descripcion"));
-                        cards.add(pokeCard);
+                        WorkCard workCard = new WorkCard();
+                        workCard.setNombre(jsonObject.getString("nombre"));
+                        workCard.setSalario(jsonObject.getString("salario"));
+                        workCard.setDireccion(jsonObject.getString("direccion"));
+                        workCard.setImageUrl(jsonObject.getString("descripcion"));
+
+                        JSONArray jsonArrayDias = jsonObject.getJSONArray("dias");
+                        for (int j = 0; j < jsonArrayDias.length(); j++) {
+                            dias.add(jsonArrayDias.getString(j));
+                        }
+
+                        workCard.setDias(dias);
+                        cards.add(workCard);
                     }
                 }catch (JSONException jsonException){
                     jsonException.printStackTrace();
@@ -80,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    private void setRecyclerView(List<PokeCard> pokeCards)
+    private void setRecyclerView(List<WorkCard> workCards)
     {
-        PokemonRecycleAdapter pokemonRecycleAdapter = new PokemonRecycleAdapter(this, pokeCards);
+        PokemonRecycleAdapter pokemonRecycleAdapter = new PokemonRecycleAdapter(this, workCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(pokemonRecycleAdapter);
 

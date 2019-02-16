@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.itesm.edu.pokemon.PokeCardActivity;
 import android.itesm.edu.pokemon.R;
-import android.itesm.edu.pokemon.model.PokeCard;
+import android.itesm.edu.pokemon.model.WorkCard;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,10 +23,10 @@ public class PokemonRecycleAdapter
         extends RecyclerView.Adapter<PokemonRecycleAdapter.PokeRecordHolder>{
 
     private Context context;
-    private List<PokeCard> cards;
+    private List<WorkCard> cards;
     RequestOptions options;
 
-    public PokemonRecycleAdapter(Context context, List<PokeCard> cards) {
+    public PokemonRecycleAdapter(Context context, List<WorkCard> cards) {
         this.context = context;
         this.cards = cards;
         options = new RequestOptions().centerCrop().placeholder(R.drawable.load_card).error(R.drawable.load_card);
@@ -42,7 +42,7 @@ public class PokemonRecycleAdapter
         pokeRecordHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                PokeCard pokeCard = cards.get(pokeRecordHolder.getAdapterPosition());
+                WorkCard pokeCard = cards.get(pokeRecordHolder.getAdapterPosition());
                 Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
                 Intent it = new Intent(context, PokeCardActivity.class);
                 it.putExtra("pokemon", pokeCard);
@@ -54,9 +54,10 @@ public class PokemonRecycleAdapter
 
     @Override
     public void onBindViewHolder(@NonNull PokeRecordHolder pokeRecordHolder, int i) {
-        pokeRecordHolder.name.setText(cards.get(i).getName());
-        pokeRecordHolder.id.setText(cards.get(i).getId());
-        pokeRecordHolder.artist.setText(cards.get(i).getArtist());
+        pokeRecordHolder.name.setText(cards.get(i).getNombre());
+        pokeRecordHolder.id.setText(cards.get(i).getSalario());
+        pokeRecordHolder.artist.setText(cards.get(i).getDireccion());
+        pokeRecordHolder.artist.setText(cards.get(i).getImageUrl());
 
         Glide.with(context).load(cards.get(i).getImageUrl()).apply(options).into(pokeRecordHolder.image);
     }

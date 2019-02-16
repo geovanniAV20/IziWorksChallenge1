@@ -1,6 +1,6 @@
 package android.itesm.edu.pokemon;
 
-import android.itesm.edu.pokemon.model.PokeCard;
+import android.itesm.edu.pokemon.model.WorkCard;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -16,11 +16,11 @@ public class PokeCardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poke_card);
-        PokeCard pokeCard = (PokeCard) getIntent().getSerializableExtra("pokemon");
-        loadPokemon(pokeCard);
+        WorkCard workCard = (WorkCard) getIntent().getSerializableExtra("pokemon");
+        loadPokemon(workCard);
     }
 
-    private void loadPokemon(PokeCard pokeCard){
+    private void loadPokemon(WorkCard workCard){
         TextView id, name, artist;
         ImageView image;
 
@@ -31,10 +31,10 @@ public class PokeCardActivity extends AppCompatActivity {
 
        RequestOptions options = new RequestOptions().centerCrop().placeholder(R.drawable.load_card).error(R.drawable.load_card);
 
-       name.setText(pokeCard.getName());
-       id.setText(pokeCard.getId());
-       artist.setText(pokeCard.getArtist());
+       name.setText(workCard.getNombre());
+       id.setText(workCard.getSalario());
+       artist.setText(workCard.getDireccion());
 
-        Glide.with(this).load(pokeCard.getImageUrl()).apply(options).into(image);
+        Glide.with(this).load(workCard.getImageUrl()).apply(options).into(image);
     }
 }
