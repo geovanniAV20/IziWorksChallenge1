@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
                     {
                         jsonObject = cardsJSON.getJSONObject(i);
                         PokeCard pokeCard = new PokeCard();
-                        pokeCard.setId(jsonObject.getString("id"));
-                        pokeCard.setName(jsonObject.getString("name"));
-                        pokeCard.setImageUrl(jsonObject.getString("imageUrl"));
-                        pokeCard.setArtist(jsonObject.getString("artist"));
+                        pokeCard.setId(jsonObject.getString("nombre"));
+                        pokeCard.setName(jsonObject.getString("salario"));
+                        //pokeCard.setImageUrl(jsonObject.getString("imageUrl"));
+                        pokeCard.setArtist(jsonObject.getString("descripcion"));
                         cards.add(pokeCard);
                     }
                 }catch (JSONException jsonException){
