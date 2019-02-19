@@ -20,41 +20,45 @@
         android:layout_height="130dp"
         android:orientation="vertical"
         android:layout_margin="8dp">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Card Name"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/id_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Id Card"
-            android:id="@+id/id_card"/>
+            android:textColor="@android:color/black" />
 
 
         <TextView
+            android:id="@+id/author_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/author_card"
-            android:text="Murakami"
             android:layout_marginTop="10dp"
             android:background="@drawable/author"
-            android:textColor="#fff"
-            android:textSize="15sp"
-            android:textStyle="bold"
             android:drawableLeft="@drawable/star"
-            android:paddingRight="5dp"/>
+            android:paddingRight="5dp"
+            android:text="Murakami"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/another"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="5km" />
+            android:text="5km"
+            android:textColor="@android:color/black" />
 
 
     </LinearLayout>
