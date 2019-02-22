@@ -1,13 +1,12 @@
 package android.itesm.edu.pokemon;
 
 
-import android.itesm.edu.pokemon.adapters.PokemonRecycleAdapter;
+import android.itesm.edu.pokemon.adapters.WorksRecycleAdapter;
 import android.itesm.edu.pokemon.model.WorkCard;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,7 +26,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String JSON_URL = "https://api.myjson.com/bins/kb4ca" ;
+    private final String JSON_URL = "https://api.myjson.com/bins/18sw8u" ;
 
     private JsonObjectRequest request;
     private RequestQueue requestQueue;
@@ -95,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void setRecyclerView(List<WorkCard> wordCards)
     {
-        PokemonRecycleAdapter pokemonRecycleAdapter = new PokemonRecycleAdapter(this, wordCards);
+        WorksRecycleAdapter worksRecycleAdapter = new WorksRecycleAdapter(this, wordCards);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(pokemonRecycleAdapter);
+        recyclerView.setAdapter(worksRecycleAdapter);
 
     }
 

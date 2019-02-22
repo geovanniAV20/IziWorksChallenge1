@@ -1,20 +1,13 @@
 package android.itesm.edu.pokemon;
 
-import android.app.ActionBar;
 import android.itesm.edu.pokemon.model.WorkCard;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Work_Card extends AppCompatActivity {
 
@@ -22,11 +15,11 @@ public class Work_Card extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work__card);
-        WorkCard workCard = (WorkCard) getIntent().getSerializableExtra("pokemon");
-        loadPokemon(workCard);
+        WorkCard workCard = (WorkCard) getIntent().getSerializableExtra("works");
+        loadWork(workCard);
     }
 
-    private void loadPokemon(WorkCard workCard){
+    private void loadWork(WorkCard workCard){
         TextView nombre, salario, direccion, descripcion, dias;
         ImageView image;
 
